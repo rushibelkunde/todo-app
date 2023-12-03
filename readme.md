@@ -1,6 +1,3 @@
-Certainly! To add screenshots to your README.md, you can create a new section and use the Markdown image syntax. Here's an example:
-
-```markdown
 # Todo App
 
 A simple Todo App built with React.js for the frontend, Express.js for the backend, and MySQL for the database. User authentication is implemented using JSON Web Tokens (JWT).
@@ -42,9 +39,8 @@ A simple Todo App built with React.js for the frontend, Express.js for the backe
 6. Open your browser and go to [http://localhost:3000](http://localhost:3000) to use the Todo App.
 
 ## Screenshots
-
-![Screenshot 1](/screenshots/ui.png)
-![Screenshot 2](/screenshots/register.png)
+![ui](https://github.com/rushibelkunde/todo-app/assets/105653187/71f768fb-4433-473e-a2d4-c33ebd415195)
+![register](https://github.com/rushibelkunde/todo-app/assets/105653187/31448361-d2d7-4465-be01-2f91f02321a1)
 
 ## API Endpoints
 
@@ -70,4 +66,3 @@ A simple Todo App built with React.js for the frontend, Express.js for the backe
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-```
