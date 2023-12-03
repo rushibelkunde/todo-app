@@ -43,8 +43,8 @@ A simple Todo App built with React.js for the frontend, Express.js for the backe
 
 ## Screenshots
 
-![Screenshot 1](screenshots/ui.png)
-![Screenshot 2](screenshots/register.png)
+![Screenshot 1](/screenshots/ui.png)
+![Screenshot 2](/screenshots/register.png)
 
 ## API Endpoints
 
@@ -71,5 +71,3 @@ A simple Todo App built with React.js for the frontend, Express.js for the backe
 
 This project is licensed under the [MIT License](LICENSE).
 ```
-
-Replace `screenshot1.png` and `screenshot2.png` with the actual filenames of your screenshots, and make sure to include those images in a `screenshots` folder in your project directory.
