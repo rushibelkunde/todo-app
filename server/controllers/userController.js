@@ -29,6 +29,7 @@ module.exports.login = async (req, res) => {
   const { username, password } = req.body;
   db.query(`select * from users WHERE username = '${username}'`, async (err, data, fields) => {
     if (err) {
+      console.log(err)
       return res.status(500).json({ message: err });
     }
     if (!data || !(await bcrypt.compare(password, data[0].pass))) {
