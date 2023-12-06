@@ -4,13 +4,14 @@ import axios from 'axios'
 import { useNavigate } from 'react-router'
 
 const Login = () => {
+    const Url = "https://todo-app-rho-three-59.vercel.app"
     const navigate = useNavigate()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [token, setToken] = useState('')
     const handleLogin = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/login', { username, password })
+        axios.post(`${Url}/login`, { username, password })
           .then(response => {
             setToken(response.data.token);
             localStorage.setItem("todoToken", response.data.token)

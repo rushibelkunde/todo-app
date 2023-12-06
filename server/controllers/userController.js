@@ -5,6 +5,7 @@ const db = require("../configs/db")
 
 
 module.exports.getUsers = (req, res) => {
+  db.connect()
   db.query("select * from users", (err, data) => {
     if (err) return res.json(err)
     console.log(req.userId)
@@ -13,6 +14,7 @@ module.exports.getUsers = (req, res) => {
 }
 
 module.exports.register = async (req, res) => {
+  db.connect()
   const { username, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
   db.query(`INSERT INTO users(username, pass) VALUES('${username}', '${hashedPassword}')`, (err, data, fields) => {
@@ -26,6 +28,7 @@ module.exports.register = async (req, res) => {
 }
 
 module.exports.login = async (req, res) => {
+  db.connect()
   const { username, password } = req.body;
   db.query(`select * from users WHERE username = '${username}'`, async (err, data, fields) => {
     if (err) {

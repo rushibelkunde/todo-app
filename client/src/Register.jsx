@@ -4,7 +4,7 @@ import axios from 'axios'
 import { redirect, useNavigate } from 'react-router'
 
 const Register = () => {
-
+  const Url = "https://todo-app-rho-three-59.vercel.app"
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -17,7 +17,7 @@ const Register = () => {
             localStorage.removeItem('todoToken')
         }
         console.log(username, password)
-        axios.post('http://localhost:5000/register', { username, password })
+        axios.post(`${Url}/login`, { username, password })
           .then((response)=> {
             if(response.data.message.code == "ER_DUP_ENTRY"){
                 return alert("User already exist")
