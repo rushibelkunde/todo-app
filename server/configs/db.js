@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: "postgresql://rushibelkunde18:lqJGzh5LIf3W@ep-sweet-tooth-31334594-pooler.ap-southeast-1.aws.neon.tech/tododb?sslmode=require",
   ssl: {
     require: true,
   },

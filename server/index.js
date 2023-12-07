@@ -6,7 +6,7 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' });
 
-app.use(cors({credentials: true, origin: "https://todo-app-rt5p.vercel.app/"}));
+app.use(cors({credentials: true, origin: "http://localhost:3000"}));
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import axios from 'axios'
 
 const Home = () => {
+  const Url = "https://todo-app-rho-three-59.vercel.app"
   const navigate = useNavigate()
   const [token, setToken] = useState(localStorage.getItem('todoToken'))
   const [newTodo, setNewTodo] = useState('')
@@ -15,7 +16,7 @@ const Home = () => {
 
   const fetchTodos = () => {
     // Replace the process.env.REACT_APP_URL with your Express server endpoint for fetching todos
-    axios.get(`${process.env.REACT_APP_URL}/todos`, {
+    axios.get(`${Url}/todos`, {
       headers: {
         Authorization: `${token}`,
       },
@@ -31,7 +32,7 @@ const Home = () => {
   const addTodo = (e) => {
     e.preventDefault()
     // Replace the process.env.REACT_APP_URL with your Express server endpoint for adding a todo
-    axios.post(`${process.env.REACT_APP_URL}/addTodo`, { title: newTodo }, {
+    axios.post(`${Url}/addTodo`, { title: newTodo }, {
       headers: {
         Authorization: `${token}`,
       },
@@ -48,7 +49,7 @@ const Home = () => {
 
   const deleteTodo = (todoId) => {
     // Replace the process.env.REACT_APP_URL with your Express server endpoint for deleting a todo
-    axios.delete(`${process.env.REACT_APP_URL}/deleteTodo/${todoId}`, {
+    axios.delete(`${Url}/deleteTodo/${todoId}`, {
       headers: {
         Authorization: `${token}`,
       },
@@ -65,7 +66,7 @@ const Home = () => {
   const toggleTodo = (todoId) => {
     // Replace the process.env.REACT_APP_URL with your Express server endpoint for toggling a todo
     console.log(token)
-    axios.put(`${process.env.REACT_APP_URL}/toggleTodo/${todoId}`, {}, {
+    axios.put(`${Url}/toggleTodo/${todoId}`, {}, {
       headers: {
         Authorization: `${token}`,
       },
