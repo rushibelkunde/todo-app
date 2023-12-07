@@ -17,9 +17,10 @@ const Register = () => {
             localStorage.removeItem('todoToken')
         }
         console.log(username, password)
-        axios.post(`${Url}/login`, { username, password })
+        axios.post(`${process.env.REACT_APP_URL}/register`, { username, password })
           .then((response)=> {
             if(response.data.message.code == "ER_DUP_ENTRY"){
+              console.log(response)
                 return alert("User already exist")
             }
                 alert("User Registered");

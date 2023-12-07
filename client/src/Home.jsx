@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router'
 import axios from 'axios'
 
 const Home = () => {
-
-  const Url = "https://todo-app-rho-three-59.vercel.app"
   const navigate = useNavigate()
   const [token, setToken] = useState(localStorage.getItem('todoToken'))
   const [newTodo, setNewTodo] = useState('')
@@ -16,8 +14,8 @@ const Home = () => {
   }
 
   const fetchTodos = () => {
-    // Replace the URL with your Express server endpoint for fetching todos
-    axios.get(`${Url}/todos`, {
+    // Replace the process.env.REACT_APP_URL with your Express server endpoint for fetching todos
+    axios.get(`${process.env.REACT_APP_URL}/todos`, {
       headers: {
         Authorization: `${token}`,
       },
@@ -32,8 +30,8 @@ const Home = () => {
 
   const addTodo = (e) => {
     e.preventDefault()
-    // Replace the URL with your Express server endpoint for adding a todo
-    axios.post(`${Url}/addTodo`, { title: newTodo }, {
+    // Replace the process.env.REACT_APP_URL with your Express server endpoint for adding a todo
+    axios.post(`${process.env.REACT_APP_URL}/addTodo`, { title: newTodo }, {
       headers: {
         Authorization: `${token}`,
       },
@@ -49,8 +47,8 @@ const Home = () => {
   };
 
   const deleteTodo = (todoId) => {
-    // Replace the URL with your Express server endpoint for deleting a todo
-    axios.delete(`${Url}/deleteTodo/${todoId}`, {
+    // Replace the process.env.REACT_APP_URL with your Express server endpoint for deleting a todo
+    axios.delete(`${process.env.REACT_APP_URL}/deleteTodo/${todoId}`, {
       headers: {
         Authorization: `${token}`,
       },
@@ -65,9 +63,9 @@ const Home = () => {
   };
 
   const toggleTodo = (todoId) => {
-    // Replace the URL with your Express server endpoint for toggling a todo
+    // Replace the process.env.REACT_APP_URL with your Express server endpoint for toggling a todo
     console.log(token)
-    axios.put(`${Url}/toggleTodo/${todoId}`, {}, {
+    axios.put(`${process.env.REACT_APP_URL}/toggleTodo/${todoId}`, {}, {
       headers: {
         Authorization: `${token}`,
       },
