@@ -12,7 +12,7 @@ const Home = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('todoToken');
 
-  if(token){
+  if(!token){
     navigate('/login')
   }
 
