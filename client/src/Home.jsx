@@ -1,5 +1,5 @@
 // Home.js
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useNavigate } from 'react-router';
 import TodoList from './TodoList';
 import axios from 'axios';
@@ -12,15 +12,17 @@ const Home = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('todoToken');
 
-  if(!token){
-    navigate('/login')
-  }
-
   const signout = () => {
     localStorage.removeItem("todoToken");
     alert("Sign Out Successfully");
     navigate('/login');
   }
+
+      useEffect(()=>{ 
+     if(!localStorage.getItem("todoToken")){ 
+             navigate('/login') 
+         } 
+       },[])
 
   
 
