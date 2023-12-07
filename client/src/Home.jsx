@@ -12,11 +12,17 @@ const Home = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('todoToken');
 
+  if(token){
+    navigate('/login')
+  }
+
   const signout = () => {
     localStorage.removeItem("todoToken");
     alert("Sign Out Successfully");
     navigate('/login');
   }
+
+  
 
   return (
     <div>
