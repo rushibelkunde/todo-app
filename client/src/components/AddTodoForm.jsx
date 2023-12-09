@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddTodoForm = ({ token,  setCurrentTodos, onSearch }) => {
+const AddTodoForm = ({ token,  setCurrentTodos, onSearch, onAdd }) => {
   const Url = "https://todo-app-rho-three-59.vercel.app"
   const [newTodo, setNewTodo] = useState('');
   const [disable, setDisable] = useState(false)
@@ -21,6 +21,7 @@ const AddTodoForm = ({ token,  setCurrentTodos, onSearch }) => {
         setCurrentTodos((prev)=> [...prev, newTodo])
         setNewTodo('');
         setDisable(false)
+        onAdd()
       })
       .catch(error => {
         console.error('Error adding todo:', error);
