@@ -45,7 +45,7 @@ const TodoList = ({ token, Url }) => {
 
   return (
     <div>
-      <AddTodoForm token={token} onAdd={fetchTodos} onSearch={handleSearch} />
+      <AddTodoForm token={token} onSearch={handleSearch} setTodos={setTodos} />
       <ul className='flex flex-col items-center gap-2 mt-5'>
         {currentTodos.map(todo => (
           <TodoItem key={todo.id} todo={todo} token={token} currentTodos={currentTodos} setCurrentTodos={setCurrentTodos} />
