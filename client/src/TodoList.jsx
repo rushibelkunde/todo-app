@@ -30,6 +30,7 @@ const TodoList = ({ token, Url }) => {
       })
       .catch(error => {
         console.error('Error fetching todos:', error);
+        localStorage.removeItem('todoToken')
       });
   };
 
@@ -47,7 +48,7 @@ const TodoList = ({ token, Url }) => {
       <AddTodoForm token={token} onAdd={fetchTodos} onSearch={handleSearch} />
       <ul className='flex flex-col items-center gap-2 mt-5'>
         {currentTodos.map(todo => (
-          <TodoItem key={todo.id} todo={todo} onDelete={fetchTodos} onToggle={fetchTodos} token={token} />
+          <TodoItem key={todo.id} todo={todo} token={token} currentTodos={currentTodos} setCurrentTodos={setCurrentTodos} />
         ))}
       </ul>
       <Pagination totalItems={todos.length} itemsPerPage={itemsPerPage} currentPage={currentPage} onPageChange={setCurrentPage} />

@@ -1,5 +1,5 @@
 // Home.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import TodoList from './TodoList';
 import axios from 'axios';
@@ -10,17 +10,21 @@ const Home = () => {
   const Url = "https://todo-app-rho-three-59.vercel.app"
 
   const navigate = useNavigate();
+  
   const token = localStorage.getItem('todoToken');
-
-  if(token){
-    navigate('/login')
-  }
+ 
 
   const signout = () => {
     localStorage.removeItem("todoToken");
     alert("Sign Out Successfully");
     navigate('/login');
   }
+
+  useEffect(()=>{
+    if(!token){
+      navigate('/login')
+    }
+  },[])
 
   
 
