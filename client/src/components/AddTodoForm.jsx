@@ -5,12 +5,12 @@ import axios from 'axios';
 const AddTodoForm = ({ token,  setCurrentTodos, onSearch }) => {
   const Url = "https://todo-app-rho-three-59.vercel.app"
   const [newTodo, setNewTodo] = useState('');
+  const [disable, setDisable] = useState(false)
 //   const [searchTerm, setSearchTerm] = useState('');
 
   const addTodo = (e) => {
     e.preventDefault();
-    setCurrentTodos((prev)=> [...prev, newTodo])
-    setNewTodo('');
+    setDisable(true)
     axios.post(`${Url}/addTodo`, { title: newTodo }, {
       headers: {
         Authorization: `${token}`,
@@ -18,6 +18,9 @@ const AddTodoForm = ({ token,  setCurrentTodos, onSearch }) => {
     })
       .then(response => {
         console.log(response.data.message);
+        setCurrentTodos((prev)=> [...prev, newTodo])
+        setNewTodo('');
+        setDisable(false)
       })
       .catch(error => {
         console.error('Error adding todo:', error);
@@ -42,9 +45,10 @@ const AddTodoForm = ({ token,  setCurrentTodos, onSearch }) => {
         <button
           type="submit"
           onClick={addTodo}
-          className='bg-black rounded-xl p-2 text-white font-semibold'
-        >
-          Add todo
+          className={`${disable? 'bg-gray-700': 'bg-black'} rounded-xl p-2 text-white font-semibold`}
+          disabled = {disable}
+        > 
+          {disable? 'Adding...': 'Add todo'}
         </button>
       </form>
 
