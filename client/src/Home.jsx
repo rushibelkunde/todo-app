@@ -1,9 +1,5 @@
 // Home.js
-<<<<<<< HEAD
 import React, { useEffect } from 'react';
-=======
-import React, {useEffect} from 'react';
->>>>>>> 6e953725e097fb8adfa2dfcccbc1f6bf5b3bcc06
 import { useNavigate } from 'react-router';
 import TodoList from './TodoList';
 import axios from 'axios';
@@ -16,10 +12,7 @@ const Home = () => {
   const navigate = useNavigate();
   
   const token = localStorage.getItem('todoToken');
-<<<<<<< HEAD
  
-=======
->>>>>>> 6e953725e097fb8adfa2dfcccbc1f6bf5b3bcc06
 
   const signout = () => {
     localStorage.removeItem("todoToken");
@@ -27,19 +20,11 @@ const Home = () => {
     navigate('/login');
   }
 
-<<<<<<< HEAD
   useEffect(()=>{
     if(!token){
       navigate('/login')
     }
   },[])
-=======
-      useEffect(()=>{ 
-     if(!localStorage.getItem("todoToken")){ 
-             navigate('/login') 
-         } 
-       },[])
->>>>>>> 6e953725e097fb8adfa2dfcccbc1f6bf5b3bcc06
 
   
 
