@@ -7,6 +7,12 @@ const TodoItem = ({ todo, token, currentTodos, setCurrentTodos }) => {
   const { id, title, completed, created_at } = todo;
 
   const deleteTodo = () => {
+    const todos = [...currentTodos]
+    const i = currentTodos.findIndex((t) => t.id === id)
+    if (i !== -1) {
+      todos.splice(i, 1)
+      setCurrentTodos(todos)
+    }
     axios.delete(`${Url}/deleteTodo/${id}`, {
       headers: {
         Authorization: `${token}`,
@@ -14,12 +20,6 @@ const TodoItem = ({ todo, token, currentTodos, setCurrentTodos }) => {
     })
       .then(response => {
         console.log(response.data.message);
-        const todos = [...currentTodos]
-        const i = currentTodos.findIndex((t)=> t.id === id)
-        if(i!==-1){
-          todos.splice(i,1)
-          setCurrentTodos(todos)
-        }
         // onDelete()
       })
       .catch(error => {
@@ -28,6 +28,12 @@ const TodoItem = ({ todo, token, currentTodos, setCurrentTodos }) => {
   };
 
   const toggleTodo = () => {
+    const todos = [...currentTodos]
+    const i = currentTodos.findIndex((t) => t.id === id)
+    if (i !== -1) {
+      todos[i].completed = !todos[i].completed
+      setCurrentTodos(todos)
+    }
     axios.put(`${Url}/toggleTodo/${id}`, {}, {
       headers: {
         Authorization: `${token}`,
@@ -35,12 +41,6 @@ const TodoItem = ({ todo, token, currentTodos, setCurrentTodos }) => {
     })
       .then(response => {
         console.log(response.data.message);
-        const todos = [...currentTodos]
-        const i = currentTodos.findIndex((t)=> t.id === id)
-        if(i!==-1){
-          todos[i].completed = !todos[i].completed
-          setCurrentTodos(todos)
-        }
         // onToggle(); // Refresh the todos list
       })
       .catch(error => {

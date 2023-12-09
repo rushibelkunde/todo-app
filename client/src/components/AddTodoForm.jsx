@@ -2,13 +2,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddTodoForm = ({ token,  setTodos, onSearch }) => {
+const AddTodoForm = ({ token,  setCurrentTodos, onSearch }) => {
   const Url = "https://todo-app-rho-three-59.vercel.app"
   const [newTodo, setNewTodo] = useState('');
 //   const [searchTerm, setSearchTerm] = useState('');
 
   const addTodo = (e) => {
     e.preventDefault();
+    setCurrentTodos((prev)=> [...prev, newTodo])
+    setNewTodo('');
     axios.post(`${Url}/addTodo`, { title: newTodo }, {
       headers: {
         Authorization: `${token}`,
@@ -16,8 +18,6 @@ const AddTodoForm = ({ token,  setTodos, onSearch }) => {
     })
       .then(response => {
         console.log(response.data.message);
-        setTodos((prev)=> [...prev, newTodo])
-        setNewTodo('');
       })
       .catch(error => {
         console.error('Error adding todo:', error);
