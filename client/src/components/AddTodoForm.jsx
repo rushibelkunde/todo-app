@@ -18,10 +18,8 @@ const AddTodoForm = ({ token,  setCurrentTodos, onSearch, onAdd }) => {
     })
       .then(response => {
         console.log(response.data.message);
-        setCurrentTodos((prev)=> [...prev, newTodo])
-        setNewTodo('');
-        setDisable(false)
         onAdd()
+        setDisable(false)
       })
       .catch(error => {
         console.error('Error adding todo:', error);
