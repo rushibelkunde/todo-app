@@ -33,7 +33,6 @@ const TodoList = ({ token, Url }) => {
         localStorage.removeItem('todoToken')
       });
   };
-
   const handleSearch = (term) => {
     setSearchTerm(term);
     setCurrentPage(1);

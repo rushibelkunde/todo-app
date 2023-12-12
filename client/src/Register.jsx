@@ -8,11 +8,13 @@ const Register = () => {
     // const Url = "http://localhost:5000"
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [disable, setDisable] = useState(false)
 
     const navigate = useNavigate()
     
     const handleRegister = (e) => {
         e.preventDefault()
+        setDisable(true)
 
         if(localStorage.getItem('todoToken')){
             localStorage.removeItem('todoToken')
@@ -25,6 +27,7 @@ const Register = () => {
                 return alert("User already exist")
             }
                 alert("User Registered");
+                setDisable(false)
                 navigate('/login')
                 
           })
@@ -44,7 +47,9 @@ const Register = () => {
             onChange={(e)=>setPassword(e.target.value)} id="" placeholder='password'/>
 
             <button type="submit" onClick={handleRegister} 
-            className='bg-black w-32 rounded-xl p-2 text-white font-semibold m-auto'>Register</button>
+            className='bg-black w-32 rounded-xl p-2 text-white font-semibold m-auto' disabled={disable}>
+              {disable? 'Registering...' : "Register"}
+              </button>
 
             <h1 className='text-center text-zinc-500'>already have an account? 
             <span className='font-semibold ml-2 cursor-pointer text-black' onClick={()=>navigate('/login')}>

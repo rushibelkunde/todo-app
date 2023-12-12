@@ -40,6 +40,7 @@ const AddTodoForm = ({ token,  setCurrentTodos, onSearch, onAdd }) => {
           placeholder='todo..'
           onChange={(e) => setNewTodo(e.target.value)}
           className='bg-slate-200 rounded-xl p-2'
+          required
         />
         <button
           type="submit"
