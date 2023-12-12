@@ -4,9 +4,10 @@ import axios from 'axios';
 import TodoItem from './components/TodoItem';
 import Pagination from './components/Pagination';
 import AddTodoForm from './components/AddTodoForm';
+import { useNavigate } from 'react-router';
 
 const TodoList = ({ token, Url }) => {
-    
+  const navigate = useNavigate()
   const [todos, setTodos] = useState([]);
   const [currentTodos, setCurrentTodos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,6 +32,8 @@ const TodoList = ({ token, Url }) => {
       .catch(error => {
         console.error('Error fetching todos:', error);
         localStorage.removeItem('todoToken')
+        navigate('/login')
+        
       });
   };
   const handleSearch = (term) => {
