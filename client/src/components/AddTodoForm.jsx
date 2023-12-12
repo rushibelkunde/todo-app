@@ -10,6 +10,9 @@ const AddTodoForm = ({ token,  setCurrentTodos, onSearch, onAdd }) => {
 
   const addTodo = (e) => {
     e.preventDefault();
+    if(newTodo===""){
+      return alert("Todo can't be empty string")
+    }
     setDisable(true)
     axios.post(`${Url}/addTodo`, { title: newTodo }, {
       headers: {
@@ -40,7 +43,7 @@ const AddTodoForm = ({ token,  setCurrentTodos, onSearch, onAdd }) => {
           placeholder='todo..'
           onChange={(e) => setNewTodo(e.target.value)}
           className='bg-slate-200 rounded-xl p-2'
-          required
+          required={true}
         />
         <button
           type="submit"
