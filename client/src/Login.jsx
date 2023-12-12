@@ -24,6 +24,7 @@ const Login = () => {
             navigate('/')
           })
           .catch(error => {
+            setLoading(false)
             alert("invalid credentials")
             console.error('Error logging in:', error);
           });
