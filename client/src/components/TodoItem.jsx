@@ -51,7 +51,9 @@ const TodoItem = ({ todo, token, currentTodos, setCurrentTodos }) => {
   return (
     <li className={`${completed ? 'bg-green-200' : 'bg-red-200'} p-2 flex gap-2 w-80 justify-around rounded-xl items-center`}>
       <h1 className='font-semibold'>{title}</h1>
-      <button onClick={deleteTodo} className='font-extrabold text-red-600'>X</button>
+      <button onClick={deleteTodo} className='font-extrabold text-red-600'>
+        <img src="delete.png" alt="" width={30}/>
+      </button>
       <input type="checkbox" value={completed} onChange={toggleTodo} checked={completed} />
       <span className='text-sm font-normal'>{new Date(created_at).toISOString().substring(0, 10)}</span>
     </li>

@@ -37,6 +37,7 @@ const Login = () => {
       },[])
   return (
     <div>
+      
         <h1 className='text-center font-semibold text-2xl mt-60 mb-5'>Login</h1>
         <form method="post" className='flex flex-col w-72 gap-2 m-auto'>
             <input type="text" value={username} name="username" className='bg-slate-100 p-2 rounded-xl'
