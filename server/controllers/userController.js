@@ -45,7 +45,7 @@ module.exports.login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: user.uid }, process.env.SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.uid }, process.env.SECRET, { expiresIn: '23h' });
     res.json({ token });
   } catch (err) {
     console.log(err);
