@@ -4,7 +4,7 @@ module.exports.getTodos = async (req, res) => {
     try {
         const userId = req.userId;
         const query = {
-            text: 'SELECT * FROM todos WHERE user_id = $1',
+            text: 'SELECT * FROM todos WHERE user_id = $1 ORDER BY created_at DESC',
             values: [userId],
         };
 
