@@ -14,7 +14,7 @@ const SubTodo = ({ todoId, token }) => {
     }, [todoId]);
 
     const fetchSubTodos = () => {
-        axios.get(`${Url}/${todoId}`, {
+        axios.get(`${Url}/subtodos/${todoId}`, {
             headers: {
                 Authorization: `${token}`,
             },
@@ -28,7 +28,7 @@ const SubTodo = ({ todoId, token }) => {
     };
 
     const toggleSubTodo = (subTodoId) => {
-        axios.put(`${Url}/${subTodoId}`, {}, {
+        axios.put(`${Url}/toggleSubTodo/${subTodoId}`, {}, {
             headers: {
                 Authorization: `${token}`,
             },
@@ -44,7 +44,7 @@ const SubTodo = ({ todoId, token }) => {
     };
 
     const deleteSubTodo = (subTodoId) => {
-        axios.delete(`${Url}/${subTodoId}`, {
+        axios.delete(`${Url}/deleteSubTodo/${subTodoId}`, {
             headers: {
                 Authorization: `${token}`,
             },
