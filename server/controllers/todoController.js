@@ -4,7 +4,8 @@ module.exports.getTodos = async (req, res) => {
     try {
         const userId = req.userId;
         const query = {
-            text: 'SELECT * FROM todos WHERE user_id = $1 ORDER BY created_at DESC',
+            // text: 'SELECT * FROM todos WHERE user_id = $1 ORDER BY created_at DESC',
+            text: 'SELECT todos.*, categories.category_name FROM todos JOIN categories ON todos.category_id = categories.id WHERE user_id = $1 ORDER BY created_at DESC',
             values: [userId],
         };
 
@@ -17,12 +18,12 @@ module.exports.getTodos = async (req, res) => {
 
 module.exports.addTodo = async (req, res) => {
     try {
-        const { title } = req.body;
+        const { title, category_id } = req.body;
         const userId = req.userId;
 
         const query = {
-            text: 'INSERT INTO todos(user_id, title, completed) VALUES($1, $2, false)',
-            values: [userId, title],
+            text: 'INSERT INTO todos(user_id, title, category_id, completed) VALUES($1, $2, $3, false)',
+            values: [userId, title, category_id],
         };
 
         await pool.query(query);

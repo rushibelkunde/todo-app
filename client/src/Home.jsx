@@ -1,17 +1,22 @@
 // Home.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import TodoList from './TodoList';
 import axios from 'axios';
 import AddTodoForm from './components/AddTodoForm';
+
+import CategoryForm from './components/CategoryForm';
 
 const Home = () => {
   // const Url = "http://localhost:5000";
   const Url = "https://todo-app-rho-three-59.vercel.app"
 
   const navigate = useNavigate();
+
+  const [showCategory, setShowCategory] = useState(false)
   
   const token = localStorage.getItem('todoToken');
+  const [categories, setCategories] = useState([])
  
 
   const signout = () => {
@@ -19,6 +24,25 @@ const Home = () => {
     alert("Sign Out Successfully");
     navigate('/login');
   }
+
+  const fetchCategories = () => {
+    // Replace 'YOUR_API_ENDPOINT' with the actual endpoint to retrieve categories
+    axios.get(`${Url}/categories`,{
+      headers:{
+        Authorization: token
+      }
+    })
+      .then(response => {
+        console.log(response.data)
+        setCategories(response.data);
+        // setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching categories:', error);
+        // setLoading(false);
+      });
+  };
+
 
   useEffect(()=>{
     if(!token){
@@ -36,8 +60,15 @@ const Home = () => {
         <button onClick={signout} className='bg-red-700 text-white font-bold p-2 rounded-xl'>
           Signout
         </button>
+        <button className='bg-zinc-200 p-2 rounded-xl font-semibold' onClick={()=>setShowCategory(!showCategory)}>
+        {showCategory? <span className='text-red-600 font-bold'>close</span>: "Create Catagory"}
+        </button>
       </div>
-      <TodoList token={token} Url={Url} />
+      <div className=''>
+        {showCategory? <CategoryForm token={token} fetchCategories={fetchCategories} categories={categories} setCategories={setCategories} />: ""}
+      </div>
+     
+      <TodoList token={token} categories={categories} fetchCategories={fetchCategories}  />
     </div>
   );
 };
