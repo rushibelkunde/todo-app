@@ -1,68 +1,94 @@
 # Todo App
 
-A simple Todo App built with React.js for the frontend, Express.js for the backend, and MySQL for the database. User authentication is implemented using JSON Web Tokens (JWT).
+This is a Todo App built with React.js for the frontend, Node.js and Express for the backend, and PostgreSQL for the database.
 
 ## Features
 
-- User registration and login
-- CRUD operations for Todos (Create, Read, Update, Delete)
-- Token-based authentication for secure access
+- User authentication with JWT token
+- CRUD operations for categories
+- CRUD operations for todos
+- CRUD operations for subtodos associated with each todo
+- Search functionality for todos
+- Pagination support for todos
+- Filtering todos by category
 
-## Getting Started
+## Technologies Used
 
-1. Clone the repository:
+- React.js
+- TailwindCSS
+- Express.js
+- Postgres SQL
+- JSON Web Tokens (JWT)
+- bcrypt for password hashing
 
-   ```bash
-   git clone https://github.com/rushibelkunde/todo-app.git
-   ```
+## Project Structure
 
-2. Navigate to the project directory:
+The project is organized into two main folders: `client` and `server`.
 
-   ```bash
-   cd todo-app
-   ```
+### Client
 
-3. Install dependencies:
+The `client` folder contains the React.js application built with Tailwind for styling.
 
-   ```bash
-   npm install
-   ```
+#### Installation
 
-4. Set up your MySQL database and update the configuration in `server/config/db.js`.
+```bash
+cd client
+npm install
+```
 
-5. Run the development server:
+#### Usage
 
-   ```bash
-   npm run dev
-   ```
+```bash
+npm start
+```
 
-6. Open your browser and go to [http://localhost:3000](http://localhost:3000) to use the Todo App.
+### Server
+
+The `server` folder contains the Node.js and Express backend, along with the PostgreSQL database.
+
+#### Installation
+
+1. Create a PostgreSQL database and update the connection details in `server/configs/db.js`.
+
+2. Install dependencies:
+
+```bash
+cd server
+npm install
+```
+
+3. Run the server:
+
+```bash
+npm start
+```
+
+## Endpoints
+
+- `POST /register`: Register a new user
+- `POST /login`: Login and obtain a JWT token
+- `GET /categories`: Get all categories
+- `POST /addCategory`: Add a new category
+- `DELETE /deleteCategory/:id`: Delete a category by ID
+- `GET /todos`: Get all todos with optional pagination, search, and category filter
+- `POST /addTodo`: Add a new todo
+- `DELETE /deleteTodo/:id`: Delete a todo by ID
+- `PUT /toggleTodo/:id`: Toggle the completion status of a todo
+- `GET /subtodos/:todoId`: Get all subtodos for a specific todo
+- `POST /addSubTodo`: Add a new subtodo to a specific todo
+- `DELETE /deleteSubTodo/:id`: Delete a subtodo by ID
+- `PUT /toggleSubTodo/:id`: Toggle the completion status of a subtodo
 
 ## Screenshots
 ![ui](https://github.com/rushibelkunde/todo-app/assets/105653187/71f768fb-4433-473e-a2d4-c33ebd415195)
 ![register](https://github.com/rushibelkunde/todo-app/assets/105653187/31448361-d2d7-4465-be01-2f91f02321a1)
 
-## API Endpoints
+## Contributing
 
-- `POST /register`: Register a new user.
-- `POST /login`: Authenticate and log in a user.
-- `GET /todos`: Get all Todos for the authenticated user.
-- `POST /addTodo`: Add a new Todo for the authenticated user.
-- `PUT /toggleTodo/:id`: Toggle the completion status of a Todo.
-- `DELETE /deleteTodo/:id`: Delete a Todo.
-
-## Technologies Used
-
-- React.js
-- Express.js
-- MySQL
-- JSON Web Tokens (JWT)
-- bcrypt for password hashing
-
-## Author
-
-[Rushikesh Belkunde]
+Feel free to contribute to this project by submitting pull requests or opening issues. Your feedback and contributions are welcome!
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+

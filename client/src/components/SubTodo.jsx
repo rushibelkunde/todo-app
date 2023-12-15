@@ -89,7 +89,7 @@ const SubTodo = ({ todoId, token }) => {
                 <button onClick={addSubTodo} className='bg-black text-white p-2 rounded-xl'>Add</button>
             </div>
             <h1 className='text-center font-semibold mt-2'>SubTodos</h1>
-            <ul className='flex flex-col items-center mt-2'>
+            <ul className='flex flex-col items-center mt-2 gap-2'>
                 {subTodos.map(subTodo => (
                     <li key={subTodo.id}
                     className={`${subTodo.completed ? 'bg-green-200' : 'bg-red-200'} p-2 flex gap-2 w-60 justify-around rounded-xl items-center`}>
