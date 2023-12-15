@@ -80,15 +80,15 @@ npm start
 - `PUT /toggleSubTodo/:id`: Toggle the completion status of a subtodo
 
 ## Screenshots
-![ui](https://github.com/rushibelkunde/todo-app/assets/105653187/71f768fb-4433-473e-a2d4-c33ebd415195)
-![register](https://github.com/rushibelkunde/todo-app/assets/105653187/31448361-d2d7-4465-be01-2f91f02321a1)
+<img src="https://github.com/rushibelkunde/todo-app/assets/105653187/31448361-d2d7-4465-be01-2f91f02321a1" width="500px">
+<hr/>
+<img src="https://github.com/rushibelkunde/todo-app/assets/105653187/1ae15a15-b026-4fb6-8de3-4f5e22de0f81" width="500px">
+<hr/>
+<img src="https://github.com/rushibelkunde/todo-app/assets/105653187/44944d18-6a57-4174-855c-4ff67f57a2a3" width="500px">
+<hr/>
 
 ## Contributing
 
 Feel free to contribute to this project by submitting pull requests or opening issues. Your feedback and contributions are welcome!
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
 
