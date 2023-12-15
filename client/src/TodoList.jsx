@@ -86,7 +86,7 @@ const TodoList = ({ token, categories, fetchCategories }) => {
       <select name="category" className='m-auto' id="" onChange={(e)=> setCategory(e.target.value)} value={category}>
       <option value="all">all</option>
           {categories.map((category)=>(
-            <option value={category.id}>{category.category_name}</option>
+            <option value={category.id}>{category.display_name}</option>
           ))}
         </select>
         {currentTodos?.map(todo => (

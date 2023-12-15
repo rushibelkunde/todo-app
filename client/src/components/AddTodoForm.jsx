@@ -16,7 +16,7 @@ const AddTodoForm = ({ token, setCurrentTodos, onSearch, onAdd, fetchCategories,
       return alert("Todo can't be empty string")
     }
     if (category=="") {
-      return alert("please create the category!!")
+      return alert("please create/select the category!!")
     }
     setDisable(true)
     axios.post(`${Url}/addTodo`, { title: newTodo, category_id: category }, {
@@ -57,18 +57,18 @@ const AddTodoForm = ({ token, setCurrentTodos, onSearch, onAdd, fetchCategories,
           required={true}
         />
         <select name="category" id="" value={category} onChange={(e)=> setCategory(e.target.value)}>
-          <option value="">select category</option>
+          <option value="">select</option>
           {categories.map((category)=>(
-            <option value={category.id} onChange={(e)=> setCategory(e.target.value)}>{category.category_name}</option>
+            <option value={category.id} onChange={(e)=> setCategory(e.target.value)}>{category.display_name}</option>
           ))}
         </select>
         <button
           type="submit"
           onClick={addTodo}
-          className={`${disable ? 'bg-gray-700' : 'bg-black'} rounded-xl p-2 text-white font-semibold`}
+          className={`${disable ? 'bg-gray-700' : 'bg-black'} rounded-xl p-1 sm:p-2  text-white font-semibold`}
           disabled={disable}
         >
-          {disable ? 'Adding...' : 'Add todo'}
+          {disable ? 'Adding...' : 'Add'}
         </button>
       </form>
 

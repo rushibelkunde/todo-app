@@ -86,7 +86,7 @@ const CategoryForm = ({token, categories, setCategories}) => {
         {categories.map((category)=>(
           <li className='p-2 bg-slate-100 flex flex-col  mt-2 rounded-xl'>
             <div className='flex justify-around items-center'>
-            <span>{category.category_name}</span>
+            <span>{category.display_name}</span>
 
             {deleteDialog== category.id? "" :  <button onClick={()=> setDeleteDialog(category.id)}>X</button> }
            

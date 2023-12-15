@@ -1,10 +1,8 @@
 const { Pool } = require('pg');
 
-const main = "postgresql://rushibelkunde18:lqJGzh5LIf3W@ep-sweet-tooth-31334594-pooler.ap-southeast-1.aws.neon.tech/tododb?sslmode=require"
-const version2 = 'postgresql://rushibelkunde18:lqJGzh5LIf3W@ep-shrill-frog-28268155-pooler.ap-southeast-1.aws.neon.tech/tododb?sslmode=require'
 
 const pool = new Pool({
-  connectionString:  version2, 
+  connectionString:  process.env.DB_URL_VERSION2, 
   ssl: {
     require: true,
   },
